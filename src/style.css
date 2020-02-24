@@ -33,6 +33,9 @@ body {
   background-color: #535783; */
 }
 
+#block {
+  height: 60vh;
+}
 
 #chatDiv {
   /* height: 100%; */
