@@ -33,11 +33,6 @@ body {
   background-color: #535783; */
 }
 
-.centerBlock {
-  margin: 70%;
-  background-color: #00cf69;
-  position: relative;
-}
 
 #chatDiv {
   /* height: 100%; */
@@ -47,9 +42,9 @@ body {
   /* vertical-align: bottom; */
   overflow: auto;
 
-  background-color: #393e70;
+  background-color: #2c2e43;
 
-  margin:auto;
+  margin-top:50%;
  
 }
 
