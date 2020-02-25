@@ -24,13 +24,12 @@ const RenderWishDB=(DB,totalIdx) => {
             {
              return (
                     <div key={idx+totalIdx}>
-                        <div><i className="fas fa-long-arrow-alt-down innerArrow"></i></div>
+                        <div><i  className="fas fa-long-arrow-alt-down innerArrow"></i></div>
                         <div className='innerWish'>{wish}</div>
                     </div>
              )}
          else
              {
-   
                 return (
                     <div key={idx+totalIdx}>
                         <div className='innerWish'>{wish}</div>
@@ -58,14 +57,8 @@ const SummaryInner = ( props ) => {
                      <Design path={props.path} questionCount={props.questionCount} 
                         botMessege={textTransform(terminalOutput, obj, props.h1, true)}/>
                      </span>
-ּ    
                 </div>
-                    
                         {RenderWishDB(wishDB, props.idx)}
-        
-                  {/* {WishDB} */}
-      
-
              <div style={separator}></div>
             <div className='clickableTextContainer'>
             {alreadyAnswered ?
@@ -75,7 +68,6 @@ const SummaryInner = ( props ) => {
                     </button> :
                  <button onClick={ ()=> { props.setNextStep('a')
                             setAnswerState(true);
-                        
                          }}
                                                   className="clickableText">
                                                       <i className="fas fa-chevron-down fa-3x"></i>

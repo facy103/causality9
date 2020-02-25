@@ -132,7 +132,7 @@ const txtSubmit = (e, ph) => {
         <div id="mypage">
         <div ref={chatContainerRef}id="chatContainer">
             <div ref= {chatDivRef} id="chatDiv"> 
-            <div id='block'></div>
+            {/* <div id='block'></div> */}
           
               {generateStep()}
             </div>  

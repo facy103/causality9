@@ -23,7 +23,7 @@ questions =
     "title": "{2המציאות}",
     "question": "ממה אינך מרוצה?",
     "dialogeType": "horizontal",
-    "placeholder": "המציאות",
+    "placeholder": "תאר בחופשיות",
     "answer": ""
   },
   {

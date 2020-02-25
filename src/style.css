@@ -34,7 +34,7 @@ body {
 }
 
 #block {
-  height: 50vh;
+  height: 60vh;
 }
 
 #chatDiv {
@@ -47,7 +47,7 @@ body {
 
   background-color: #2c2e43;
 
-  /* margin-top:50%; */
+  margin-top:50%;
  
 }
 

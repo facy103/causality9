@@ -25,5 +25,8 @@
   text-align: center !important;
   color: #F8B506;
   margin: auto;
+}
 
+.wishRoot {
+  display: flex;
 }
