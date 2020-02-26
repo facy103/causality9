@@ -16,19 +16,27 @@ let newOutput = [questions[0]];
 
 const chatDivRef = React.createRef();
 const chatContainerRef = React.createRef();
+const bottomOfScreen = React.createRef();
 
 const App = () => {
 
 const [terminalOutput,setTerminalOutput] = useState([questions[0]]);
+const [scrollTop, setScrollTop] = useState(0)
 
-useEffect( ()=>{
-  scrollBottom();
-})
+
+
 
 const scrollBottom = () => {
-  let chatDivHeight = chatDivRef.current.clientHeight;
-  chatContainerRef.current.scrollTop = chatDivHeight;
+  let chatDivHeight = chatDivRef.current?.clientHeight;
+  if (chatDivHeight > 0 && chatDivHeight != scrollTop) {
+    setScrollTop(chatDivHeight)
+  }
 }
+
+// const scrollBottom = () => {
+//   let chatDivHeight = chatDivRef.current.clientHeight;
+//   chatContainerRef.current.scrollTop = chatDivHeight;
+// }
 
 const txtSubmit = (e, ph) => {
   if (e.keyCode == 13 ) {
@@ -89,11 +97,12 @@ const txtSubmit = (e, ph) => {
   }
 
   const generateStep =()=> {
-    return terminalOutput.map ( ( obj, index )=> {
+    var returnedObject = terminalOutput.map ( ( obj, index )=> {
          switch ( obj.dialogeType ) {
         case "prompt":
             return <Prompt 
             key={index}
+            index={index}
             botMessege={obj.question}
             setNextStep={(value)=>setNextStep(value)}
             obj={obj}
@@ -103,6 +112,7 @@ const txtSubmit = (e, ph) => {
         case "horizontal":  
             return <PromptInput 
             key={index}
+            index={index}
             botMessege={obj.question}     
             txtSubmit={(e, ph)=>txtSubmit(e, ph)}
             ph={obj.placeholder}
@@ -113,7 +123,7 @@ const txtSubmit = (e, ph) => {
         case "summaryInner":
             return <SummaryInner 
             key={index}
-            idx={index}
+            index={index}
             botMessege={obj.question}
             h1={obj.h1}
             setNextStep={(value)=>setNextStep(value)}
@@ -126,8 +136,14 @@ const txtSubmit = (e, ph) => {
             break;
         }
       })
+      scrollBottom();
+      return returnedObject
     }
 
+    useEffect(() => {
+      bottomOfScreen.current.scrollIntoView({ behavior: "smooth" })
+    }, [scrollTop])
+    
     return (
         <div id="mypage">
         <div ref={chatContainerRef}id="chatContainer">
@@ -136,7 +152,7 @@ const txtSubmit = (e, ph) => {
           
               {generateStep()}
             </div>  
-      
+            <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
         </div>
         <Footer setNextStep={setNextStep}/>
 

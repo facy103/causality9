@@ -58,7 +58,7 @@ const SummaryInner = ( props ) => {
                         botMessege={textTransform(terminalOutput, obj, props.h1, true)}/>
                      </span>
                 </div>
-                        {RenderWishDB(wishDB, props.idx)}
+                        {RenderWishDB(wishDB, props.index)}
              <div style={separator}></div>
             <div className='clickableTextContainer'>
             {alreadyAnswered ?
