@@ -14,28 +14,29 @@ let questionCountStore = [0];
 let wishDB = [];
 let newOutput = [questions[0]];
 
+
+
 const chatDivRef = React.createRef();
 const bottomOfScreen = React.createRef();
 
 const App = () => {
 
+  const [chatDivStyle, setChatDivStyle] = useState({
+    'position': 'absolute',
+    'max-height': '100%'
+  })
+  
+  
 const [terminalOutput,setTerminalOutput] = useState([questions[0]]);
 const [scrollTop, setScrollTop] = useState(0)
 
-
-
-
 const scrollBottom = () => {
   let chatDivHeight = chatDivRef.current?.clientHeight;
+  console.log(chatDivHeight);
   if (chatDivHeight > 0 && chatDivHeight != scrollTop) {
     setScrollTop(chatDivHeight)
   }
 }
-
-// const scrollBottom = () => {
-//   let chatDivHeight = chatDivRef.current.clientHeight;
-//   chatContainerRef.current.scrollTop = chatDivHeight;
-// }
 
 const txtSubmit = (e, ph) => {
   if (e.keyCode == 13 ) {
@@ -53,7 +54,7 @@ const txtSubmit = (e, ph) => {
     if ("wishDBUpdate" in currentQ) {
       wishDB.push(questions[questionCount].answer);
     }
-    
+
     if ("swap" in currentQ) {
         for ( let swapRef in currentQ.swap )
         {     
@@ -84,7 +85,6 @@ const txtSubmit = (e, ph) => {
 
   const setNextStep=(value)=> {
     setIndex(value);
-
     let obj = questions[questionCount]; 
     let mirror = true;
     if ( obj.mirror == false ) { mirror=false; }
@@ -93,7 +93,6 @@ const txtSubmit = (e, ph) => {
     newOutput.push({...questions[questionCount]});
     newOutput[newOutput.length-1].question = textTransform(questions, obj, obj.question, mirror);
     setTimeout(() => {setTerminalOutput( newOutput)}, 700);
-    // setTerminalOutput(newOutput);
   }
 
   const generateStep =()=> {
@@ -141,17 +140,18 @@ const txtSubmit = (e, ph) => {
     }
 
     useEffect(() => {
-      bottomOfScreen.current.scrollIntoView({ behavior: "smooth" })
-    }, [scrollTop])
+      
+      bottomOfScreen.current.scrollIntoView({ behavior: "smooth" },[scrollTop])
+    })
     
     return (
         <div id="mypage">
         <div id="chatContainer">
-            <div ref= {chatDivRef} id="chatDiv"> 
+            <div ref= {chatDivRef} style={chatDivStyle} id="chatDiv"> 
               {generateStep()}
-            </div>  
-            <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
-        </div>
+            </div>
+        <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}>test</div>
+        </div>  
         <Footer setNextStep={setNextStep}/>
     </div>
 )
