@@ -15,7 +15,6 @@ let wishDB = [];
 let newOutput = [questions[0]];
 
 const chatDivRef = React.createRef();
-const chatContainerRef = React.createRef();
 const bottomOfScreen = React.createRef();
 
 const App = () => {
@@ -54,6 +53,7 @@ const txtSubmit = (e, ph) => {
     if ("wishDBUpdate" in currentQ) {
       wishDB.push(questions[questionCount].answer);
     }
+    
     if ("swap" in currentQ) {
         for ( let swapRef in currentQ.swap )
         {     
@@ -97,7 +97,7 @@ const txtSubmit = (e, ph) => {
   }
 
   const generateStep =()=> {
-    var returnedObject = terminalOutput.map ( ( obj, index )=> {
+    let returnedObject = terminalOutput.map ( ( obj, index )=> {
          switch ( obj.dialogeType ) {
         case "prompt":
             return <Prompt 
@@ -146,16 +146,13 @@ const txtSubmit = (e, ph) => {
     
     return (
         <div id="mypage">
-        <div ref={chatContainerRef}id="chatContainer">
+        <div id="chatContainer">
             <div ref= {chatDivRef} id="chatDiv"> 
-            {/* <div id='block'></div> */}
-          
               {generateStep()}
             </div>  
             <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
         </div>
         <Footer setNextStep={setNextStep}/>
-
     </div>
 )
 }
