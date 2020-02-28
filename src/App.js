@@ -21,18 +21,12 @@ const bottomOfScreen = React.createRef();
 
 const App = () => {
 
-  const [chatDivStyle, setChatDivStyle] = useState({
-    'position': 'absolute',
-    'max-height': '100%'
-  })
-  
   
 const [terminalOutput,setTerminalOutput] = useState([questions[0]]);
 const [scrollTop, setScrollTop] = useState(0)
 
 const scrollBottom = () => {
-  let chatDivHeight = chatDivRef.current?.clientHeight;
-  console.log(chatDivHeight);
+  let chatDivHeight = chatDivRef.current?.scrollHeight;
   if (chatDivHeight > 0 && chatDivHeight != scrollTop) {
     setScrollTop(chatDivHeight)
   }
@@ -146,11 +140,12 @@ const txtSubmit = (e, ph) => {
     
     return (
         <div id="mypage">
-        <div id="chatContainer">
-            <div ref= {chatDivRef} style={chatDivStyle} id="chatDiv"> 
+        <div  id="chatContainer">
+      
+            <div  ref= {chatDivRef} id="chatDiv"> 
               {generateStep()}
+              <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
             </div>
-        <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}>test</div>
         </div>  
         <Footer setNextStep={setNextStep}/>
     </div>
