@@ -10,11 +10,30 @@ const separator = {
     height: 1
 }
 
+const oneWish = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding:'6px'
+}
+
+const arrowContainer = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '13px',
+    padding:'6px'
+}
+
+const arrowText = {
+
+}
+
 const RenderWishDB=(DB,totalIdx) => {
     return (
         <Fragment>
         <div>
-            תשובותיך עד כה:
+            על פי תשובותיך עד כה:
         </div>
          <br></br>
   
@@ -24,15 +43,27 @@ const RenderWishDB=(DB,totalIdx) => {
             {
              return (
                     <div key={idx+totalIdx}>
-                        <div><i  className="fas fa-long-arrow-alt-down innerArrow"></i></div>
-                        <div className='innerWish'>{wish}</div>
+                       <div style={arrowContainer}>
+                          <div style={{minWidth:'30px'}}></div>
+                          <div ><i  className="fas fa-long-arrow-alt-down innerArrow fa-2x"></i></div>
+                          <div style={arrowText}>נובע מ </div>
+                       </div>
+                        <div style={oneWish}>
+                            <div style={{fontSize:'13px'}}>הרצון:</div>
+                            <div className='innerWish'>{wish}</div>
+                            <div style={{minWidth:'30px'}}></div>
+                        </div>
                     </div>
              )}
          else
              {
                 return (
                     <div key={idx+totalIdx}>
-                        <div className='innerWish'>{wish}</div>
+                          <div style={oneWish}>
+                            <div style={{fontSize:'13px'}}>הרצון:</div>
+                            <div className='innerWish'>{wish}</div>
+                            <div style={{minWidth:'20px'}}></div>
+                        </div>
                     </div>)
             }
           }

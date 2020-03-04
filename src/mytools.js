@@ -33,6 +33,7 @@ export const applyCss=(questions,  currentQ, txt)=> {
 
   if ( "css" in currentQ )
     {
+
       for ( let masterKey in currentQ.css ) 
       {
         let subKey = Object.keys(currentQ[ "css" ][ masterKey] )[0] ;
@@ -51,6 +52,7 @@ export const applyCss=(questions,  currentQ, txt)=> {
 
 export const textTransform=(obj,  currentQ, txt, includeMirror)=> {
 //  console.log(txt);
+console.log('yes');
   if ( includeMirror === true) { 
     return mirror(buildSyntax(obj,  currentQ, applyCss(obj,  currentQ, txt)));
   } else

@@ -21,7 +21,7 @@ const bottomOfScreen = React.createRef();
 
 const App = () => {
 
-  
+questions[0].question = textTransform(questions, questions[0], questions[0].question, false);
 const [terminalOutput,setTerminalOutput] = useState([questions[0]]);
 const [scrollTop, setScrollTop] = useState(0)
 
@@ -134,7 +134,6 @@ const txtSubmit = (e, ph) => {
     }
 
     useEffect(() => {
-      
       bottomOfScreen.current.scrollIntoView({ behavior: "smooth" },[scrollTop])
     })
     
