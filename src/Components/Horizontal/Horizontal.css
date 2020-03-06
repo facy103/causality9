@@ -23,11 +23,6 @@
     background-color: #2C2E43 !important;
     margin-top: 2%;
   }
-  
-  .horizontalResponse:focus {
-    outline: none !important;
-    box-shadow: none;
-  }
 
 
 .lineContainer {
@@ -55,27 +50,6 @@
     /* float: right;
   display: inline;
   clear: right; */
-  }
-
-  .promptResponse {
-    flex: inherit;
-    border-top: none;
-    border-left: 0;
-    border-right: 0;
-    resize: none;
-    padding: 10px;
-    font-family: Heebo;
-    font-size: 13px;
-    color: white;
-    margin-right: 0.5%;
-    padding-right: 1.5%;
-    width: 40%;
-    background-color: #3B3C51 !important;
-    margin-top: 2%;
-    width: 350px;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
-    text-align: center;
   }
 
   .promptResponse:focus {

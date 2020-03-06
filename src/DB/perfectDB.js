@@ -9,7 +9,8 @@ questions =
     "answer": "",
     "css": [{"color": [ {"ברכות":"#8c94a8"}]},
     {"font-size": [{"ברכות":"20px"}]}
-  ]
+  ],
+  "blockDesign": false
   },
 {
   "title": "{המציאות}",
@@ -17,7 +18,8 @@ questions =
   "dialogeType": "prompt",
   "buttons": { "a": "לא", "b": "כן" },
   "next": { "a": "{2המציאות}", "b": "{סיימת}" },
-  "answer": ""
+  "answer": "",
+  "blockDesign": true
 }, 
  {
   "title": "{סיימת}",
@@ -28,7 +30,8 @@ questions =
   "answer": "",
   "css": [{"color":[{"ברכות!":"#ffba01"}]},
   {"font-size": [{"ברכות":"20px"}]}],
-  "clear": true
+  "clear": true,
+  "blockDesign": true
 }, 
   {
     "title": "{2המציאות}",
@@ -37,7 +40,8 @@ questions =
     "placeholder": "תאר בחופשיות",
     "answer": "",
     "css": [{"color": [ {"איסוף נתונים":"#8c94a8"}]},
-    {"font-size": [{"איסוף נתונים":"20px"}]}]
+    {"font-size": [{"איסוף נתונים":"20px"}]}],
+    "blockDesign": false
   },
   {
     "title": "{רצון1}",
@@ -45,19 +49,19 @@ questions =
     "dialogeType": "horizontal",
     "placeholder": "הרצון",
     "answer": "",
-    "wishDBUpdate": true
+    "wishDBUpdate": true,
+    "blockDesign": true
   },
   {
     "title": "{ההיפךשלרצון1}",
-    "question": "מה ההיפך של הרצון {רצון1}?",
+    "question": "מה ההיפך של רצון זה:__{רצון1}?",
     "dialogeType": "horizontal",
     "placeholder": "ההיפך של הרצון",
     "answer": "",
     "ref": ["{רצון1}"],
     "mirror": false,
-    "css": [{"color":[{"{רצון1}":"#ffba01"}]}
-
-    ]
+    "css": [{"color":[{"{רצון1}":"#ffba01"}]}],
+    "blockDesign": true
   },
   // {
   //   "title": "{ההיפךשלמציאות2}",
@@ -90,7 +94,8 @@ questions =
     "answer": "",
     "ref": ["{רצון1}"],
     "css": [{"color": [ {"תחילת חקירה":"#8c94a8"}]},
-    {"font-size": [{"תחילת חקירה":"20px"}]}]
+    {"font-size": [{"תחילת חקירה":"20px"}]}],
+    "blockDesign": false
   },
   {
     "title": "{רצון2}",
@@ -98,11 +103,10 @@ questions =
     "dialogeType": "horizontal",
     "placeholder": "סיבת הרצון",
     "css": [
-    {"font-size": [{"⤴":"40px"}]}
-  ],
+    {"font-size": [{"⤴":"40px"}]}],
     "answer": "",
-    
-    "wishDBUpdate": true
+    "wishDBUpdate": true,
+    "blockDesign": true
   },
   {
     "title": "{הסבר1}",
@@ -115,8 +119,8 @@ questions =
       {"color": [{"המציאות":"#ffba01"}, {"רצונך":"#ffba01"}, {"{רצון2}":"#ffba01"}]},
       {"font-size": [{"ניתוח נתונים":"20px"}, {"וסיכום ביניים":"20px"}, {"{רצון2}":"20px"}]},
       {"text-align":[{"{רצון2}":"center !important;"}]},
-      {"display":[{"{רצון2}":"block"}]}
-    ]
+      {"display":[{"{רצון2}":"block"}]}],
+    "blockDesign": false
   },
   {
     "title": "{ההיפךשלרצון2}",
@@ -126,7 +130,8 @@ questions =
     "answer": "",
     "ref": ["{רצון2}"],
     "css": [
-      {"color": [{"{רצון2}":"#F4BD41"}]}]
+      {"color": [{"{רצון2}":"#F4BD41"}]}],
+    "blockDesign": false
   },
   {
     "title": "{האםהסיבהמחייבת}",
@@ -136,8 +141,8 @@ questions =
     "answer": "",
     "ref": ["{רצון2}","{רצון1}"],
     "css": [{"color": [ {"סיבה ⬅ תוצאה":"#8c94a8"}]},
-    {"font-size": [{"סיבה ⬅ תוצאה":"20px"}]}
-  ]
+    {"font-size": [{"סיבה ⬅ תוצאה":"20px"}]}],
+    "blockDesign": false
   },
   {
     "title": "{האםהסיבהמחייבת}",
@@ -146,7 +151,8 @@ questions =
     "buttons": { "a": "בלתי אפשרי", "b": "אפשרי" },
     "answer": "",
     "ref": ["{ההיפךשלרצון2}","{רצון1}"],
-    "css": [{"color": [ {"האם הסיבה מחייבת את התוצאה?":"#8c94a8"}]}]
+    "css": [{"color": [ {"האם הסיבה מחייבת את התוצאה?":"#8c94a8"}]}],
+    "blockDesign": true
   },
   {
     "title": "{האםהתוצאהמתחייבת}",
@@ -156,8 +162,8 @@ questions =
     "answer": "",
     "ref": ["{רצון2}","{רצון1}"],
     "css": [{"color": [    {"תוצאה ⬅ סיבה":"#8c94a8"}]},
-    {"font-size": [{"תוצאה ⬅ סיבה":"20px"}]}
-  ]
+    {"font-size": [{"תוצאה ⬅ סיבה":"20px"}]}],
+     "blockDesign": true
   },
   {
     "title": "{האםהתוצאהמתחייבת}",
@@ -169,7 +175,8 @@ questions =
     "css": [{"color": [    {"האם התוצאה מתחייבת מהסיבה?":"#8c94a8"}]}],
     "swap" : {  "{2המציאות}" : "{ההיפךשלרצון1}",
                 "{רצון1}" : "{רצון2}",
-                "{ההיפךשלרצון1}" : "{ההיפךשלרצון2}"}
+                "{ההיפךשלרצון1}" : "{ההיפךשלרצון2}"},
+    "blockDesign": true
   },
   {
     "title": "{הכנהלרצון3}",
@@ -179,6 +186,7 @@ questions =
     "buttons": { "a": "המשך", "b": "סיים" },
     "answer": "",
     "ref": ["{רצון1}"],
+    "blockDesign": false,
     "css": [{"color": [ {"העמקת חקירה":"#8c94a8"}]},
     {"font-size": [{"העמקת חקירה":"20px"}]}],
     "goto": "{רצון2}"
