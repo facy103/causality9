@@ -43,6 +43,7 @@ questions =
     {"font-size": [{"איסוף נתונים":"20px"}]}],
     "blockDesign": false
   },
+  
   {
     "title": "{רצון1}",
     "question": "מה רצונך בקשר לכך?",

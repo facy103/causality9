@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import questions from '../../DB/perfectDB.js';
 import { Markup } from 'interweave';
 
 

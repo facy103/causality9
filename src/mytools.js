@@ -1,12 +1,8 @@
 
 export  const LettersFilter= (txt)=> {
   var newTxt=txt;
-  var counter=0;
-  var dictionary = {
-    "ש":0
-  }
   
-  if (txt[0]=="ש") {
+  if (txt[0]==="ש") {
     newTxt = txt.slice(1); 
   }
   return newTxt;
@@ -17,7 +13,7 @@ export const buildSyntax = (questions, currentQ, txt) => {
   {         
       currentQ.ref.map((elm,refCount) => 
       {
-          let reference = currentQ.ref [ refCount ];
+          let reference = currentQ.ref[refCount];
           for (let qNumber in questions) {
             if ( reference === questions[qNumber].title ) { //if reference word matches title
               let foundAnswer = questions[qNumber].answer;
@@ -125,7 +121,6 @@ export const mirror = ( text ) =>
       };
       // text = LettersFilter(text);
       var count = 0 ;
-      var newSyntax = text ;
       var words = text.match(/([\u0590-\u05fe]+)|([^\u0590-\u05fe]+)/gi);
   var optimized_syntax = "";
 
@@ -137,9 +132,9 @@ export const mirror = ( text ) =>
         for ( let dict in dictionary )
         {
           
-          if ( word == dict ) 
+          if ( word === dict ) 
           {
-            words [ count ] = dictionary [ dict ] ;
+            words[ count ] = dictionary[ dict ] ;
          
           }
         }
@@ -148,7 +143,7 @@ export const mirror = ( text ) =>
 
       for (let i in words) {
             //re assemble optimized syntax
-            if (words[i] != "") {
+            if (words[i] !== "") {
               optimized_syntax += words[i] + "";
             }
           }

@@ -27,15 +27,15 @@ const [scrollTop, setScrollTop] = useState(0)
 
 const scrollBottom = () => {
   let chatDivHeight = chatDivRef.current?.scrollHeight;
-  if (chatDivHeight > 0 && chatDivHeight != scrollTop) {
+  if (chatDivHeight > 0 && chatDivHeight !== scrollTop) {
     setScrollTop(chatDivHeight)
   }
 }
 
 const txtSubmit = (e, ph) => {
-  if (e.keyCode == 13 ) {
+  if (e.keyCode === 13 ) {
       e.preventDefault();
-      if (e.target.value=='') {e.target.value=ph};
+      if (e.target.value==='') {e.target.value=ph};
       questions[questionCount].answer = e.target.value;
       setNextStep();
     }
@@ -52,11 +52,11 @@ const txtSubmit = (e, ph) => {
     if ("swap" in currentQ) {
         for ( let swapRef in currentQ.swap )
         {     
-          var swapObj = questions [ questionCount ].swap ;
-          var sourceValue = findTitle ( questions, swapRef);
-          var targetValue = findTitle ( questions, swapObj [ swapRef ] );
+          var swapObj = questions[questionCount].swap ;
+          var sourceValue = findTitle(questions, swapRef);
+          var targetValue = findTitle(questions, swapObj[swapRef] );
       
-          questions [ sourceValue ].answer = questions [ targetValue ].answer ;
+          questions[sourceValue].answer = questions[targetValue].answer ;
         }
     }
 
@@ -81,7 +81,7 @@ const txtSubmit = (e, ph) => {
     setIndex(value);
     let obj = questions[questionCount]; 
     let mirror = true;
-    if ( obj.mirror == false ) { mirror=false; }
+    if ( obj.mirror === false ) { mirror=false; }
     questionCountStore.push(questionCount);
     newOutput = [...terminalOutput];
     newOutput.push({...questions[questionCount]});
@@ -101,7 +101,6 @@ const txtSubmit = (e, ph) => {
             obj={obj}
             terminalOutput={terminalOutput}
             />
-            break;
         case "horizontal":  
             return <PromptInput 
             key={index}
@@ -111,8 +110,7 @@ const txtSubmit = (e, ph) => {
             ph={obj.placeholder}
             obj={obj}
             terminalOutput={terminalOutput}
-            />
-            break;
+            />  
         case "summaryInner":
             return <SummaryInner 
             key={index}
@@ -124,7 +122,6 @@ const txtSubmit = (e, ph) => {
             obj={obj}
             terminalOutput={terminalOutput}
             />
-            break;
           default:
             break;
         }
