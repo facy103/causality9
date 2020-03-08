@@ -2,11 +2,11 @@ import React, { useState} from 'react';
 import './Prompt.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
+import PersonalNotesIcon from '../../edit doc.svg';
 
 const BubbleDesign = styled.div`
     font-size: 15px;
     text-align: center;
-    flex: 0 1 42px;
     background-color: #3B3C51;
     margin: auto;
     margin-top: ${props => props.blockDesign ? '1px' : '30px'};
@@ -18,17 +18,81 @@ const BubbleDesign = styled.div`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   `;
 
+const NotesIcon = styled.img`
+    display: block;
+     width: 5%; 
+     height: 5%;
+     font-size: 20px;
+`;
+
+const StyledTextArea = styled.textarea`
+    flex: inherit;
+    border-top: none;
+    border-left: 0;
+    border-right: 0;
+    resize: none;
+    padding: 10px;
+    color: white;
+    margin-right: 0.5%;
+    padding-right: 1.5%;
+    background-color: #3B3C51;
+    margin-top: 2%;
+    width: 300px;
+    font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: right;
+    outLine: none;
+    box-shadow: none;
+
+    &:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
+`;
+
+
 const Prompt=(props) => {
+
+    const setBoundaries=(e)=> 
+    {
+        console.log(characterLengthCounter);
+        if ( characterLengthCounter > 43 ) 
+        { 
+         setNoteHeight(noteHeight+1)
+         characterLengthCounter=0;
+        }
+        characterLengthCounter++;
+     
+    }
+
     const [alreadyAnswered, setAnswerState] = useState(false);
     const [btnChoice, getBtnChoice] = useState(null);
+    const [userNote, setUserNote] = useState(false);
+    const [noteHeight, setNoteHeight] = useState (1);
+    let characterLengthCounter = 0;
     const obj = props.obj;
         return (
                 <BubbleDesign blockDesign={props.obj.blockDesign}>
-                       
-                <Design path={props.path} 
-                        questionCount={props.questionCount} 
-                        obj={obj}
-                        botMessege={props.botMessege}/>
+              
+                <NotesIcon src={PersonalNotesIcon} onClick={()=>setUserNote(!userNote)}/>
+                {/* message */}
+                <div style={{marginTop:'0px'}}>
+                    <Design path={props.path} 
+                            questionCount={props.questionCount} 
+                            obj={obj}
+                            botMessege={props.botMessege}/>
+                </div>
+
+                {userNote ? 
+                   <StyledTextArea 
+                       autoFocus rows={noteHeight} 
+                       placeholder={'הערות אישיות'} 
+                       autoComplete="off" 
+                       onKeyPress={(e)=>{setBoundaries(e)}}>
+                   </StyledTextArea> : null}
+
+
+                {/* //Buttons */}
                 <div className='clickableTextContainer'>
                 {alreadyAnswered ?
                     Object.keys(obj.buttons).map( (btnId, idx) => 
