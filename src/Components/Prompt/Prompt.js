@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import './Prompt.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
@@ -26,13 +26,13 @@ const NotesIcon = styled.img`
 `;
 
 const StyledTextArea = styled.textarea`
-    flex: inherit;
+
     border-top: none;
     border-left: 0;
     border-right: 0;
     resize: none;
-    padding: 10px;
-    color: white;
+
+    color: #A7AFCF;
     margin-right: 0.5%;
     padding-right: 1.5%;
     background-color: #3B3C51;
@@ -43,6 +43,9 @@ const StyledTextArea = styled.textarea`
     text-align: right;
     outLine: none;
     box-shadow: none;
+    overflow: hidden;
+    height: ${props => props.height}px;
+
 
     &:focus {
         outline: none !important;
@@ -50,30 +53,31 @@ const StyledTextArea = styled.textarea`
     }
 `;
 
-
 const Prompt=(props) => {
 
-    const setBoundaries=(e)=> 
-    {
-        console.log(characterLengthCounter);
-        if ( characterLengthCounter > 43 ) 
-        { 
-         setNoteHeight(noteHeight+1)
-         characterLengthCounter=0;
-        }
-        characterLengthCounter++;
-     
-    }
-
+    const textAreaRef = React.createRef();
     const [alreadyAnswered, setAnswerState] = useState(false);
     const [btnChoice, getBtnChoice] = useState(null);
     const [userNote, setUserNote] = useState(false);
-    const [noteHeight, setNoteHeight] = useState (1);
-    let characterLengthCounter = 0;
+    const [noteHeight, setNoteHeight] = useState (17);
+    
+    const setBoundaries=(e)=> 
+    {
+        let textAreaHeight = textAreaRef.current?.scrollHeight;
+        if ( textAreaHeight > noteHeight+4 ) 
+        { 
+      
+          setNoteHeight(noteHeight+17)
+ 
+        }
+   
+     
+    }
+
+
     const obj = props.obj;
         return (
                 <BubbleDesign blockDesign={props.obj.blockDesign}>
-              
                 <NotesIcon src={PersonalNotesIcon} onClick={()=>setUserNote(!userNote)}/>
                 {/* message */}
                 <div style={{marginTop:'0px'}}>
@@ -85,7 +89,10 @@ const Prompt=(props) => {
 
                 {userNote ? 
                    <StyledTextArea 
-                       autoFocus rows={noteHeight} 
+                       ref={textAreaRef}
+                       height={noteHeight}
+                       autoFocus 
+                    //    rows={noteHeight} 
                        placeholder={'הערות אישיות'} 
                        autoComplete="off" 
                        onKeyPress={(e)=>{setBoundaries(e)}}>
