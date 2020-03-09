@@ -44,6 +44,7 @@ const StyledTextArea = styled.textarea`
     outLine: none;
     box-shadow: none;
     overflow: hidden;
+    word-break: break-all;
     height: ${props => props.height}px;
 
 
@@ -66,9 +67,7 @@ const Prompt=(props) => {
         let textAreaHeight = textAreaRef.current?.scrollHeight;
         if ( textAreaHeight > noteHeight+4 ) 
         { 
-      
           setNoteHeight(noteHeight+17)
- 
         }
    
      
