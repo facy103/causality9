@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import './Prompt.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
-import PersonalNotesIcon from '../../edit doc.svg';
+import PersonalNotesIcon from '../../images/editnote.svg';
 
 const BubbleDesign = styled.div`
     font-size: 15px;

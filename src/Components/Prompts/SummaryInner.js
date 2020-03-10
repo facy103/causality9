@@ -1,6 +1,6 @@
 import React, { useState, Fragment}  from 'react';
 import "./Summary.css"
-import SummaryImg from './summary.svg';
+import SummaryImg from '../../images/summary.svg';
 import Design from '../Design/Design.js';
 import {textTransform} from '../../mytools.js';
 

@@ -33,12 +33,8 @@ const scrollBottom = () => {
 }
 
 const txtSubmit = (e, ph) => {
-  if (e.keyCode === 13 ) {
-      e.preventDefault();
-      if (e.target.value==='') {e.target.value=ph};
-      questions[questionCount].answer = e.target.value;
+      questions[questionCount].answer = e;
       setNextStep();
-    }
   }
 
   const setIndex = (value) =>
