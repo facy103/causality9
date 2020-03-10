@@ -183,7 +183,7 @@ questions =
     "title": "{הכנהלרצון3}",
     "question": "העמקת חקירה__למה הינך רוצה {רצון1}?",
     "dialogeType": "horizontal",
-    "placeholder": "סיבת הרצון",
+    "placeholder": "טקסט חופשי",
     "buttons": { "a": "המשך", "b": "סיים" },
     "answer": "",
     "ref": ["{רצון1}"],

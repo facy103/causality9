@@ -139,7 +139,7 @@ const txtSubmit = (e, ph) => {
               <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
             </div>
         </div>  
-        <Footer setNextStep={setNextStep}/>
+        <Footer />
     </div>
 )
 }

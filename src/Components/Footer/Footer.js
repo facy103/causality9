@@ -11,7 +11,7 @@ const Footer = (props) => {
     return (
 
         <div className="footer"> 
-            <Send setNextStep={props.setNextStep} />
+            {/* <Send setNextStep={props.setNextStep} /> */}
             <Save />
             <Restart />
             <Home />
