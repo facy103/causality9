@@ -10,7 +10,7 @@ const BubbleStyle = styled.div`
     background-color: #3B3C51;
     margin: auto;
     margin-top: ${props => props.blockDesign ? '1px' : '30px'};
-    padding: 20px 20px 40px 40px;
+    padding: 20px 40px 20px 40px;
     border-radius: 20px;
     width: fit-content;
     color: white;
@@ -30,14 +30,16 @@ const StyledTextArea = styled.textarea`
     margin-top: 15px;
     background-color: #3B3C51;
     /* margin-top: 2%; */
-    width: 250px;
+    width: 200px;
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     outLine: none;
     box-shadow: none;
     height: ${props => props.height+17}px;
+
     margin: 0 auto;
+    margin-top: 25px;
 
     &:focus {
         outline: none !important;
@@ -48,7 +50,7 @@ const StyledTextArea = styled.textarea`
 
 const SendIcon = styled.img`
     padding-right: 10px;
-    margin-top:${props => props.marginTop+5}px;
+    margin-top:${props => props.marginTop+28}px;
     width: 20px; 
     height: 20px;
     position: absolute;
