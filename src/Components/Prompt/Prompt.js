@@ -20,8 +20,8 @@ const BubbleDesign = styled.div`
 
 const NotesIcon = styled.img`
     display: block;
-     width: 5%; 
-     height: 5%;
+     width: 20px;
+     height: 20px;
      font-size: 20px;
 `;
 
@@ -37,7 +37,7 @@ const StyledTextArea = styled.textarea`
     padding-right: 1.5%;
     background-color: #3B3C51;
     margin-top: 2%;
-    width: 300px;
+    width: 90%;
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: right;

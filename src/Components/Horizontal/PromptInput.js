@@ -4,8 +4,21 @@ import Design from '../Design/Design.js';
 import styled from 'styled-components';
 import sendButton from '../../images/send.svg';
 
+
+const BubbleStyle = styled.div`
+    text-align: center;
+    background-color: #3B3C51;
+    margin: auto;
+    margin-top: ${props => props.blockDesign ? '1px' : '30px'};
+    padding: 20px 20px 40px 40px;
+    border-radius: 20px;
+    width: fit-content;
+    color: white;
+    font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+`;
+
 const StyledTextArea = styled.textarea`
-    flex: inherit;
     border-top: none;
     border-left: 0;
     border-right: 0;
@@ -17,13 +30,14 @@ const StyledTextArea = styled.textarea`
     margin-top: 15px;
     background-color: #3B3C51;
     /* margin-top: 2%; */
-    width: 270px;
+    width: 250px;
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     outLine: none;
     box-shadow: none;
     height: ${props => props.height+17}px;
+    margin: 0 auto;
 
     &:focus {
         outline: none !important;
@@ -31,25 +45,13 @@ const StyledTextArea = styled.textarea`
     }
 `;
 
-const BubbleStyle = styled.div`
-    text-align: center;
-    background-color: #3B3C51;
-    margin: auto;
-    margin-top: ${props => props.blockDesign ? '1px' : '30px'};
-    padding: 20px;
-    border-radius: 20px;
-    width: fit-content;
-    color: white;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-`;
 
 const SendIcon = styled.img`
-    display: block;
-     width: 5%; 
-     height: 5%;
-    float:left;
-    margin-top:${props => props.marginTop+20}px;
+    padding-right: 10px;
+    margin-top:${props => props.marginTop+5}px;
+    width: 20px; 
+    height: 20px;
+    position: absolute;
 `;
 
 const PromptInput = (props) => {
@@ -95,20 +97,26 @@ const PromptInput = (props) => {
     return (   
             <BubbleStyle blockDesign={props.obj.blockDesign}>
                 <Design botMessege={props.botMessege} />
-                <StyledTextArea 
-                    ref={textAreaRef}
-                    height={noteHeight}
-                    style={{...lineColor}}
-                    autoFocus rows="1" placeholder={props.ph} autoComplete="off"
-                    onKeyDown={(event)=>{txtSubmit(event)}}>
-                </StyledTextArea>
-                {answered ? null
-                :
-                 <SendIcon src={sendButton} 
-                          marginTop={noteHeight}
-                          onClick={clickSubmit}
-                            /> }
+       
+    
+                    <StyledTextArea 
+                        ref={textAreaRef}
+                        height={noteHeight}
+                        style={{...lineColor}}
+                        autoFocus rows="1" placeholder={props.ph} autoComplete="off"
+                        onKeyDown={(event)=>{txtSubmit(event)}}>
+                    </StyledTextArea>
+           
+
+                        {answered ? null
+                        :
+                        <SendIcon src={sendButton} 
+                        marginTop={noteHeight}
+                        onClick={clickSubmit}
+                        /> }
+                   
                 
+       
             </BubbleStyle>
     )
 }
