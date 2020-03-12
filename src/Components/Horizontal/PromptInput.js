@@ -3,13 +3,49 @@ import './Horizontal.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
 import sendButton from '../../images/send.svg';
+import PersonalNotesIcon from '../../images/editnote.svg';
 
+const NotesIcon = styled.img`
+    display: block;
+     width: 20px;
+     height: 20px;
+     font-size: 20px;
+`;
+
+const StyledNoteArea = styled.textarea`
+  border-top: none;
+    border-left: 0;
+    border-right: 0;
+    resize: none;
+
+    color: #A7AFCF;
+    margin-right: 0.5%;
+    padding-right: 1.5%;
+    background-color: #3B3C51;
+    margin-top: 2%;
+    width: 200px;
+    font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: right;
+    outLine: none;
+    box-shadow: none;
+    overflow: hidden;
+    word-break: break-all;
+    height: ${props => props.height}px;
+    display: block ;
+
+
+    &:focus {
+        outline: none !important;
+        box-shadow: none;
+    
+    }`
 
 const BubbleStyle = styled.div`
     text-align: center;
     background-color: #3B3C51;
     margin: auto;
-    margin-top: ${props => props.blockDesign ? '1px' : '30px'};
+    margin-top: ${props => props.blockDesign ? '1px' : '60px'};
     padding: 20px 40px 20px 40px;
     border-radius: 20px;
     width: fit-content;
@@ -64,29 +100,41 @@ const PromptInput = (props) => {
     const blue = {
         borderBottom: "solid 1px #0491FF"
     }
+    const mainTextAreaRef = React.createRef();
     const textAreaRef = React.createRef();
-    const [noteHeight, setNoteHeight] = useState (0);
+    const [textHeight, setTextHeight] = useState (0);
     const [lineColor, setLineColor] = useState(green);
     const [answered, setAnsweredState] = useState(false);
+    const [userNote, setUserNote] = useState(false);
+    const [noteHeight, setNoteHeight] = useState (17);
 
-    const setBoundaries=()=> 
+    const setTextBoundaries=()=> 
     {
-        let textAreaHeight = textAreaRef.current.scrollHeight;
-        if ( textAreaHeight > noteHeight+37 ) 
+        let mainTextAreaHeight = mainTextAreaRef.current.scrollHeight;
+        if ( mainTextAreaHeight > textHeight+37 ) 
+        { 
+          setTextHeight(textHeight+17)
+        }
+    }
+
+    const setBoundaries=(e)=> 
+    {
+        let textAreaHeight = textAreaRef.current?.scrollHeight;
+        if ( textAreaHeight > noteHeight+4 ) 
         { 
           setNoteHeight(noteHeight+17)
         }
     }
+    
 
     const clickSubmit=()=> {
-        console.log(textAreaRef.current.value);
         setLineColor(blue);
         setAnsweredState(true);
-        props.txtSubmit(textAreaRef.current.value, props.ph)
+        props.txtSubmit(mainTextAreaRef.current.value, props.ph)
     }
 
     const txtSubmit = (e) => {
-        setBoundaries();
+        setTextBoundaries();
     if (e.keyCode === 13 && e.shiftKey === false) {
         e.preventDefault();
         setLineColor(blue);
@@ -98,12 +146,22 @@ const PromptInput = (props) => {
 
     return (   
             <BubbleStyle blockDesign={props.obj.blockDesign}>
+            <NotesIcon src={PersonalNotesIcon} onClick={()=>setUserNote(!userNote)}/>
                 <Design botMessege={props.botMessege} />
-       
-    
+
+                {userNote ? 
+                   <StyledNoteArea 
+                       ref={textAreaRef}
+                       height={noteHeight}
+                       autoFocus 
+                       placeholder={'הערות אישיות'} 
+                       autoComplete="off" 
+                       onKeyPress={(e)=>{setBoundaries(e)}}>
+                   </StyledNoteArea> : null}
+                    
                     <StyledTextArea 
-                        ref={textAreaRef}
-                        height={noteHeight}
+                        ref={mainTextAreaRef}
+                        height={textHeight}
                         style={{...lineColor}}
                         autoFocus rows="1" placeholder={props.ph} autoComplete="off"
                         onKeyDown={(event)=>{txtSubmit(event)}}>
@@ -113,7 +171,7 @@ const PromptInput = (props) => {
                         {answered ? null
                         :
                         <SendIcon src={sendButton} 
-                        marginTop={noteHeight}
+                        marginTop={textHeight}
                         onClick={clickSubmit}
                         /> }
                    
