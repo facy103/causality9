@@ -10,7 +10,7 @@ questions =
     "css": [{"color": [ {"ברכות":"#8c94a8"}]},
     {"font-size": [{"ברכות":"20px"}]}
   ],
-  "blockDesign": false
+  "blockDesign": true
   },
 {
   "title": "{המציאות}",

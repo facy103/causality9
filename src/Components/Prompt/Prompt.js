@@ -9,7 +9,7 @@ const BubbleDesign = styled.div`
     text-align: center;
     background-color: #3B3C51;
     margin: auto;
-    margin-top: ${props => props.blockDesign ? '1px' : '60px'};
+    margin-top: ${props => props.blockDesign ? '1px' : '100px'};
     padding: 20px !important;
     border-radius: 20px;
     width: fit-content;
