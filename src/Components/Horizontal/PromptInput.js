@@ -30,7 +30,7 @@ const StyledNoteArea = styled.textarea`
     outLine: none;
     box-shadow: none;
     overflow: hidden;
-    word-break: break-all;
+
     height: ${props => props.height}px;
     display: block ;
 
@@ -156,7 +156,7 @@ const PromptInput = (props) => {
                        autoFocus 
                        placeholder={'הערות אישיות'} 
                        autoComplete="off" 
-                       onKeyPress={(e)=>{setBoundaries(e)}}>
+                       onChange={(e)=>{setBoundaries(e)}}>
                    </StyledNoteArea> : null}
                     
                     <StyledTextArea 
@@ -164,7 +164,7 @@ const PromptInput = (props) => {
                         height={textHeight}
                         style={{...lineColor}}
                         autoFocus rows="1" placeholder={props.ph} autoComplete="off"
-                        onKeyDown={(event)=>{txtSubmit(event)}}>
+                        onChange={(event)=>{txtSubmit(event)}}>
                     </StyledTextArea>
            
 

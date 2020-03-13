@@ -44,7 +44,6 @@ const StyledTextArea = styled.textarea`
     outLine: none;
     box-shadow: none;
     overflow: hidden;
-    word-break: break-all;
     height: ${props => props.height}px;
 
 
@@ -92,7 +91,7 @@ const Prompt=(props) => {
                     //    rows={noteHeight} 
                        placeholder={'הערות אישיות'} 
                        autoComplete="off" 
-                       onKeyPress={(e)=>{setBoundaries(e)}}>
+                       onChange={(e)=>{setBoundaries(e)}}>
                    </StyledTextArea> : null}
 
 
