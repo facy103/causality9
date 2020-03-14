@@ -3,6 +3,8 @@ import './Prompt.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
 import PersonalNotesIcon from '../../images/editnote.svg';
+import { getByDisplayValue } from '@testing-library/dom';
+import AutoTextArea from '../AutoTextArea/AutoTextArea.js';
 
 const BubbleDesign = styled.div`
     font-size: 15px;
@@ -25,52 +27,11 @@ const NotesIcon = styled.img`
      font-size: 20px;
 `;
 
-const StyledTextArea = styled.textarea`
-
-    border-top: none;
-    border-left: 0;
-    border-right: 0;
-    resize: none;
-
-    color: #A7AFCF;
-    margin-right: 0.5%;
-    padding-right: 1.5%;
-    background-color: #3B3C51;
-    margin-top: 2%;
-    width: 90%;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: right;
-    outLine: none;
-    box-shadow: none;
-    overflow: hidden;
-    height: ${props => props.height}px;
-
-
-    &:focus {
-        outline: none !important;
-        box-shadow: none;
-    }
-`;
 
 const Prompt=(props) => {
-
-    const textAreaRef = React.createRef();
     const [alreadyAnswered, setAnswerState] = useState(false);
     const [btnChoice, getBtnChoice] = useState(null);
     const [userNote, setUserNote] = useState(false);
-    const [noteHeight, setNoteHeight] = useState (17);
-    
-    const setBoundaries=(e)=> 
-    {
-        let textAreaHeight = textAreaRef.current?.scrollHeight;
-        if ( textAreaHeight > noteHeight+4 ) 
-        { 
-          setNoteHeight(noteHeight+17)
-        }
-    }
-
-
     const obj = props.obj;
         return (
                 <BubbleDesign blockDesign={props.obj.blockDesign}>
@@ -82,19 +43,7 @@ const Prompt=(props) => {
                             obj={obj}
                             botMessege={props.botMessege}/>
                 </div>
-
-                {userNote ? 
-                   <StyledTextArea 
-                       ref={textAreaRef}
-                       height={noteHeight}
-                       autoFocus 
-                    //    rows={noteHeight} 
-                       placeholder={'הערות אישיות'} 
-                       autoComplete="off" 
-                       onChange={(e)=>{setBoundaries(e)}}>
-                   </StyledTextArea> : null}
-
-
+                {userNote ? <AutoTextArea color={'#A7AFCF'} onChange={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
                 {/* //Buttons */}
                 <div className='clickableTextContainer'>
                 {alreadyAnswered ?

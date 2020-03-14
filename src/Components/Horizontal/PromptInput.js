@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Horizontal.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
 import sendButton from '../../images/send.svg';
 import PersonalNotesIcon from '../../images/editnote.svg';
+import AutoTextArea from '../AutoTextArea/AutoTextArea.js';
 
 const NotesIcon = styled.img`
     display: block;
@@ -11,35 +12,6 @@ const NotesIcon = styled.img`
      height: 20px;
      font-size: 20px;
 `;
-
-const StyledNoteArea = styled.textarea`
-  border-top: none;
-    border-left: 0;
-    border-right: 0;
-    resize: none;
-
-    color: #A7AFCF;
-    margin-right: 0.5%;
-    padding-right: 1.5%;
-    background-color: #3B3C51;
-    margin-top: 2%;
-    width: 200px;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: right;
-    outLine: none;
-    box-shadow: none;
-    overflow: hidden;
-
-    height: ${props => props.height}px;
-    display: block ;
-
-
-    &:focus {
-        outline: none !important;
-        box-shadow: none;
-    
-    }`
 
 const BubbleStyle = styled.div`
     text-align: center;
@@ -54,43 +26,22 @@ const BubbleStyle = styled.div`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 `;
 
-const StyledTextArea = styled.textarea`
-    border-top: none;
-    border-left: 0;
-    border-right: 0;
-    resize: none;
-    /* padding: 10px; */
-    color: white;
-    /* margin-right: 0.5%; */
-    /* padding-right: 1.5%; */
-    margin-top: 15px;
-    background-color: #3B3C51;
-    /* margin-top: 2%; */
-    width: 200px;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: center;
-    outLine: none;
-    box-shadow: none;
-    height: ${props => props.height+17}px;
-
-    margin: 0 auto;
-    margin-top: 25px;
-
-    &:focus {
-        outline: none !important;
-        box-shadow: none;
-    }
-`;
-
 
 const SendIcon = styled.img`
     padding-right: 10px;
     margin-top:${props => props.marginTop+28}px;
     width: 20px; 
     height: 20px;
-    position: absolute;
+    position: relative;
 `;
+
+const StyledNoteArea = {
+    'color': 'white',
+    'backgroundColor': '#3B3C51',
+    'marginTop': '2%',
+    'width': '200px',
+    'textAlign': 'center'
+}
 
 const PromptInput = (props) => {
     const green = {
@@ -106,26 +57,6 @@ const PromptInput = (props) => {
     const [lineColor, setLineColor] = useState(green);
     const [answered, setAnsweredState] = useState(false);
     const [userNote, setUserNote] = useState(false);
-    const [noteHeight, setNoteHeight] = useState (17);
-
-    const setTextBoundaries=()=> 
-    {
-        let mainTextAreaHeight = mainTextAreaRef.current.scrollHeight;
-        if ( mainTextAreaHeight > textHeight+37 ) 
-        { 
-          setTextHeight(textHeight+17)
-        }
-    }
-
-    const setBoundaries=(e)=> 
-    {
-        let textAreaHeight = textAreaRef.current?.scrollHeight;
-        if ( textAreaHeight > noteHeight+4 ) 
-        { 
-          setNoteHeight(noteHeight+17)
-        }
-    }
-    
 
     const clickSubmit=()=> {
         setLineColor(blue);
@@ -133,11 +64,12 @@ const PromptInput = (props) => {
         props.txtSubmit(mainTextAreaRef.current.value, props.ph)
     }
 
+ 
+
     const txtSubmit = (e) => {
-        setTextBoundaries();
     if (e.keyCode === 13 && e.shiftKey === false) {
         e.preventDefault();
-        setLineColor(blue);
+        // setLineColor(blue);
         setAnsweredState(true);
         if (e.target.value==='') {e.target.value=props.ph};
         props.txtSubmit(e.target.value, props.ph)
@@ -150,33 +82,24 @@ const PromptInput = (props) => {
                 <Design botMessege={props.botMessege} />
 
                 {userNote ? 
-                   <StyledNoteArea 
-                       ref={textAreaRef}
-                       height={noteHeight}
-                       autoFocus 
+                   <AutoTextArea 
+                       color={'#A7AFCF'}
                        placeholder={'הערות אישיות'} 
-                       autoComplete="off" 
-                       onChange={(e)=>{setBoundaries(e)}}>
-                   </StyledNoteArea> : null}
+                       onChange={(e)=>{}}/> : null}
                     
-                    <StyledTextArea 
-                        ref={mainTextAreaRef}
-                        height={textHeight}
-                        style={{...lineColor}}
-                        autoFocus rows="1" placeholder={props.ph} autoComplete="off"
-                        onChange={(event)=>{txtSubmit(event)}}>
-                    </StyledTextArea>
-           
+                    <AutoTextArea 
+                        width={'230px'}
+                        color={'white'}
+                        placeholder={props.ph} 
+                        onChange={(event)=>{txtSubmit(event)
+                            props.onChange(event)}}/>
 
-                        {answered ? null
-                        :
-                        <SendIcon src={sendButton} 
+                    {answered ? null :
+                    <SendIcon 
+                        src={sendButton} 
                         marginTop={textHeight}
                         onClick={clickSubmit}
-                        /> }
-                   
-                
-       
+                    /> }
             </BubbleStyle>
     )
 }

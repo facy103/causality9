@@ -11,7 +11,7 @@ const refresh = () => {
 
     return (
       <div style={styled}> 
-        <button id="refresh" type="button" onClick={refresh}><i className="fas fa-redo fa-2x"></i></button>
+        <button id="myBtnId2" type="button" onClick={refresh}><i className="fas fa-redo fa-2x"></i></button>
     </div>
 
     )

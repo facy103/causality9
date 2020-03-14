@@ -89,7 +89,7 @@ const txtSubmit = (e, ph) => {
     let returnedObject = terminalOutput.map ( ( obj, index )=> {
          switch ( obj.dialogeType ) {
         case "prompt":
-            return <Prompt 
+            return <Prompt
             key={index}
             index={index}
             botMessege={obj.question}
@@ -103,6 +103,7 @@ const txtSubmit = (e, ph) => {
             index={index}
             botMessege={obj.question}     
             txtSubmit={(e, ph)=>txtSubmit(e, ph)}
+            onChange={scrollBottom}
             ph={obj.placeholder}
             obj={obj}
             terminalOutput={terminalOutput}
@@ -134,9 +135,9 @@ const txtSubmit = (e, ph) => {
         <div id="mypage">
         <div  id="chatContainer">
       
-            <div  ref= {chatDivRef} id="chatDiv"> 
+            <div ref={chatDivRef} id="chatDiv"> 
               {generateStep()}
-              <div ref={bottomOfScreen} style={{ float: "left", clear: "both" }}></div>
+              <div ref={bottomOfScreen} style={{ backgroundColor:'red', float: "left", clear: "both" }}>bottomOfScreen</div>
             </div>
         </div>  
         <Footer />
