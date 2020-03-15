@@ -137,7 +137,7 @@ const App = () => {
 
         <div ref={chatDivRef} id="chatDiv">
           {generateStep()}
-          <div ref={bottomOfScreen} style={{ backgroundColor: 'red', float: "left", clear: "both" }}>bottomOfScreen</div>
+          <div ref={bottomOfScreen} style={{ backgroundColor: 'red', float: "left", clear: "both" }}></div>
         </div>
       </div>
       <Footer />
