@@ -26,17 +26,19 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-const AutoTextArea = forwardRef((props, userTextRef) => {
-  const textAreaRef = React.useRef();
+const AutoTextArea = props => {
+  const textAreaRef = React.createRef();
   const autoSize = e => {
-    // console.log(textAreaRef.current.scrollHeight);
+
     textAreaRef.current.style.height = "0";
     textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    if (props.getValueCallback) {
+        props.getValueCallback(e.target.value);
+    }
   };
 
   return (
     <StyledTextArea
-      innerRef={userTextRef}
       color={props.color}
       style={props.style}
       width={props.width}
@@ -51,7 +53,8 @@ const AutoTextArea = forwardRef((props, userTextRef) => {
         props.onChange(e);
       }}
     />
+
   );
-});
+};
 
 export default AutoTextArea;

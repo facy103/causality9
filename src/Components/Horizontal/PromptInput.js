@@ -42,18 +42,22 @@ const PromptInput = props => {
   const blue = {
     borderBottom: "solid 1px #0491FF"
   };
-  const mainTextAreaRef = React.createRef();
+
   const [textHeight, setTextHeight] = useState(0);
   const [lineColor, setLineColor] = useState(green);
   const [answered, setAnsweredState] = useState(false);
   const [userNote, setUserNote] = useState(false);
-  const userTextRef = React.useRef();
+  const textAreaValue = React.useRef(null);
+
+  const getTextAreaValue = newValue => {
+    textAreaValue.current = newValue;
+  };
 
   const clickSubmit = () => {
     setLineColor(blue);
     setAnsweredState(true);
-    console.log(userTextRef.current?.value);
-    // props.txtSubmit(textRef.current.value, props.ph)
+   // console.log(textAreaValue.current?.value);
+    props.txtSubmit(textAreaValue.current, props.ph)
   };
 
   const txtSubmit = e => {
@@ -85,7 +89,7 @@ const PromptInput = props => {
       ) : null}
 
       <AutoTextArea
-        innerRef={userTextRef}
+        getValueCallback={getTextAreaValue}
         width={"230px"}
         color={"white"}
         placeholder={props.ph}
