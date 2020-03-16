@@ -10,14 +10,16 @@ const BubbleDesign = styled.div`
     font-size: 15px;
     text-align: center;
     background-color: #3B3C51;
+  
     margin: auto;
-    margin-top: ${props => props.blockDesign ? '1px' : '100px'};
-    padding: 20px !important;
+    margin-top: ${props => props.blockDesign ? '10px' : '10px'};
+    padding: 20px 60px 20px 60px;
     border-radius: 20px;
     width: fit-content;
     color: white;
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    opacity: ${props => (props.answered ? "0.5" : "1" )};
   `;
 
 const NotesIcon = styled.img`
@@ -25,16 +27,18 @@ const NotesIcon = styled.img`
      width: 20px;
      height: 20px;
      font-size: 20px;
+     margin-right:-50px;
+     margin-top:-10px;
 `;
 
 
 const Prompt=(props) => {
-    const [alreadyAnswered, setAnswerState] = useState(false);
+    const [answered, setAnswerState] = useState(false);
     const [btnChoice, getBtnChoice] = useState(null);
     const [userNote, setUserNote] = useState(false);
     const obj = props.obj;
         return (
-                <BubbleDesign blockDesign={props.obj.blockDesign}>
+                <BubbleDesign answered={answered} blockDesign={props.obj.blockDesign}>
                 <NotesIcon src={PersonalNotesIcon} onClick={()=>setUserNote(!userNote)}/>
                 {/* message */}
                 <div style={{marginTop:'0px'}}>
@@ -46,7 +50,7 @@ const Prompt=(props) => {
                 {userNote ? <AutoTextArea color={'#A7AFCF'} onChange={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
                 {/* //Buttons */}
                 <div className='clickableTextContainer'>
-                {alreadyAnswered ?
+                {answered ?
                     Object.keys(obj.buttons).map( (btnId, idx) => 
                     {
                         if ( btnId === btnChoice ) {

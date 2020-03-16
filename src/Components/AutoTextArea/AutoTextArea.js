@@ -10,7 +10,7 @@ const StyledTextArea = styled.textarea`
   margin-right: 0.5%;
   padding-right: 1.5%;
   background-color: #3b3c51;
-  margin-top: 2%;
+  margin-top: ${props => (props.marginTop)};
   width: ${props => (props.width ? props.width : "50%")};
   font-size: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -39,6 +39,7 @@ const AutoTextArea = props => {
 
   return (
     <StyledTextArea
+      marginTop={props.marginTop}
       color={props.color}
       style={props.style}
       width={props.width}

@@ -11,40 +11,33 @@ const NotesIcon = styled.img`
   width: 20px;
   height: 20px;
   font-size: 20px;
+  margin-right: -50px;
+  margin-top: -10px;
 `;
 
 const BubbleStyle = styled.div`
   text-align: center;
   background-color: #3b3c51;
   margin: auto;
-  margin-top: ${props => (props.blockDesign ? "1px" : "100px")};
-  padding: 20px 40px 20px 40px;
+  margin-top: ${props => (props.blockDesign ? "10px" : "10px")};
+  padding: 20px 60px 20px 60px;
   border-radius: 20px;
   width: fit-content;
   color: white;
   font-size: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: ${props => (props.answered ? "0.5" : "1")};
 `;
 
 const SendIcon = styled.img`
-  padding-right: 10px;
-  margin-top: ${props => props.marginTop + 28}px;
+  position: absolute;
+  margin-top: -25px;
   width: 20px;
   height: 20px;
-  position: relative;
+  left: 400px;
 `;
 
 const PromptInput = props => {
-  const green = {
-    borderBottom: "solid 1px #5ECC74"
-  };
-
-  const blue = {
-    borderBottom: "solid 1px #0491FF"
-  };
-
-  const [textHeight, setTextHeight] = useState(0);
-  const [lineColor, setLineColor] = useState(green);
   const [answered, setAnsweredState] = useState(false);
   const [userNote, setUserNote] = useState(false);
   const textAreaValue = React.useRef(null);
@@ -54,26 +47,25 @@ const PromptInput = props => {
   };
 
   const clickSubmit = () => {
-    setLineColor(blue);
     setAnsweredState(true);
-   // console.log(textAreaValue.current?.value);
-    props.txtSubmit(textAreaValue.current, props.ph)
+    if (textAreaValue.current === null) {
+      props.txtSubmit(props.ph);
+    } else props.txtSubmit(textAreaValue.current);
   };
 
   const txtSubmit = e => {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
-      // setLineColor(blue);
       setAnsweredState(true);
       if (e.target.value === "") {
         e.target.value = props.ph;
       }
-      props.txtSubmit(e.target.value, props.ph);
+      props.txtSubmit(e.target.value);
     }
   };
 
   return (
-    <BubbleStyle blockDesign={props.obj.blockDesign}>
+    <BubbleStyle answered={answered} blockDesign={props.obj.blockDesign}>
       <NotesIcon
         src={PersonalNotesIcon}
         onClick={() => setUserNote(!userNote)}
@@ -88,24 +80,21 @@ const PromptInput = props => {
         />
       ) : null}
 
-      <AutoTextArea
-        getValueCallback={getTextAreaValue}
-        width={"230px"}
-        color={"white"}
-        placeholder={props.ph}
-        onChange={event => {
-          txtSubmit(event);
-          props.onChange(event);
-        }}
-      />
-
-      {answered ? null : (
-        <SendIcon
-          src={sendButton}
-          marginTop={textHeight}
-          onClick={clickSubmit}
+      <div style={{ display: "relative" }}>
+        <AutoTextArea
+          getValueCallback={getTextAreaValue}
+          marginTop={"20px"}
+          width={"230px"}
+          color={"white"}
+          placeholder={props.ph}
+          onChange={event => {
+            txtSubmit(event);
+            props.onChange(event);
+          }}
         />
-      )}
+
+        {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} />}
+      </div>
     </BubbleStyle>
   );
 };

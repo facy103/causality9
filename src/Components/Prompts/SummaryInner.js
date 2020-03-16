@@ -2,6 +2,7 @@ import React, { useState, Fragment}  from 'react';
 import "./Summary.css"
 import SummaryImg from '../../images/summary.svg';
 import Design from '../Design/Design.js';
+import styled from "styled-components";
 import {textTransform} from '../../mytools.js';
 
 const separator = {
@@ -25,9 +26,21 @@ const arrowContainer = {
     padding:'6px'
 }
 
-const arrowText = {
-
-}
+const PromptStyle = styled.div`
+    font-size: 15px;
+    text-align: center;
+    background-color: #3B3C51;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 7.5px;
+    padding: 20px 60px 20px 60px;
+    border-radius: 20px;
+    width: fit-content;
+    color: white;
+    font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    opacity: ${props => (props.answered ? "0.5" : "1" )};
+  `
 
 const RenderWishDB=(DB,totalIdx) => {
     return (
@@ -46,7 +59,7 @@ const RenderWishDB=(DB,totalIdx) => {
                        <div style={arrowContainer}>
                           <div style={{minWidth:'30px'}}></div>
                           <div ><i  className="fas fa-long-arrow-alt-down innerArrow fa-2x"></i></div>
-                          <div style={arrowText}>נובע מ </div>
+                          <div>נובע מ </div>
                        </div>
                         <div style={oneWish}>
                             <div style={{fontSize:'13px'}}>הרצון:</div>
@@ -76,23 +89,22 @@ const RenderWishDB=(DB,totalIdx) => {
 
 const SummaryInner = ( props ) => {
     const wishDB = [...props.wishDB] ;
-    const [alreadyAnswered, setAnswerState] = useState(false);
+    const [answered, setAnswerState] = useState(false);
     const obj = props.obj;
     const terminalOutput = props.terminalOutput;
 
     return (
-        <div className='prompt'>
-                <div className='summaryContainer'>
-                     <img src={SummaryImg} alt="SummaryImg" />
-                     <span className='Summarytitle'>
+        <PromptStyle answered={answered}>
+                     <img style={{position: 'absolute', right: '420px'}} src={SummaryImg} alt="SummaryImg" />
+                     <span style={{margin:'auto', padding:'20px'}}>
                      <Design path={props.path} questionCount={props.questionCount} 
                         botMessege={textTransform(terminalOutput, obj, props.h1, true)}/>
                      </span>
-                </div>
+           
                         {RenderWishDB(wishDB, props.index)}
              <div style={separator}></div>
             <div className='clickableTextContainer'>
-            {alreadyAnswered ?
+            {answered ?
                     <button 
                                               className="clickableText">
                                                   <i className="fas fa-chevron-down fa-3x"></i>
@@ -108,7 +120,7 @@ const SummaryInner = ( props ) => {
                 
             </div>
            
-        </div>
+        </PromptStyle>
 
     )
 }

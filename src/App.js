@@ -32,7 +32,7 @@ const App = () => {
     }
   }
 
-  const txtSubmit = (e, ph) => {
+  const txtSubmit = (e) => {
     questions[questionCount].answer = e;
     setNextStep();
   }
