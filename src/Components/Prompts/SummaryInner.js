@@ -29,7 +29,9 @@ const arrowContainer = {
 const PromptStyle = styled.div`
     font-size: 15px;
     text-align: center;
-    background-color: #3B3C51;
+          width: 100%;
+          background-color: #3B3C51;
+
     margin: auto;
     margin-top: 30px;
     margin-bottom: 7.5px;
@@ -40,6 +42,10 @@ const PromptStyle = styled.div`
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: ${props => (props.answered ? "0.5" : "1" )};
+    position: relative;
+    @media (max-width: 400px) {
+        width: 330;
+      }
   `
 
 const RenderWishDB=(DB,totalIdx) => {
@@ -95,7 +101,7 @@ const SummaryInner = ( props ) => {
 
     return (
         <PromptStyle answered={answered}>
-                     <img style={{position: 'absolute', right: '420px'}} src={SummaryImg} alt="SummaryImg" />
+                     <img style={{position: 'absolute', right: '10%', top:'9.5%'}} src={SummaryImg} alt="SummaryImg" />
                      <span style={{margin:'auto', padding:'20px'}}>
                      <Design path={props.path} questionCount={props.questionCount} 
                         botMessege={textTransform(terminalOutput, obj, props.h1, true)}/>

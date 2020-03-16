@@ -20,6 +20,9 @@ const BubbleDesign = styled.div`
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: ${props => (props.answered ? "0.5" : "1" )};
+    @media (max-width: 400px) {
+        width: 330;
+      }
   `;
 
 const NotesIcon = styled.img`

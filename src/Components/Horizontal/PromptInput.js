@@ -27,6 +27,11 @@ const BubbleStyle = styled.div`
   font-size: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   opacity: ${props => (props.answered ? "0.5" : "1")};
+  position: relative;
+
+  @media (max-width: 400px) {
+    width: 330;
+  }
 `;
 
 const SendIcon = styled.img`
@@ -34,7 +39,7 @@ const SendIcon = styled.img`
   margin-top: -25px;
   width: 20px;
   height: 20px;
-  left: 400px;
+  left: 8%;
 `;
 
 const PromptInput = props => {
@@ -80,11 +85,11 @@ const PromptInput = props => {
         />
       ) : null}
 
-      <div style={{ display: "relative" }}>
+      <div>
         <AutoTextArea
           getValueCallback={getTextAreaValue}
           marginTop={"20px"}
-          width={"230px"}
+          width={"200px"}
           color={"white"}
           placeholder={props.ph}
           onChange={event => {
