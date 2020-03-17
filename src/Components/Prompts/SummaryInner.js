@@ -43,9 +43,8 @@ const PromptStyle = styled.div`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: ${props => (props.answered ? "0.5" : "1" )};
     position: relative;
-    @media (max-width: 400px) {
-        width: 330;
-      }
+    width: 220px;
+ 
   `
 
 const RenderWishDB=(DB,totalIdx) => {
