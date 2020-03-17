@@ -10,9 +10,11 @@ const BubbleDesign = styled.div`
     font-size: 15px;
     text-align: center;
     background-color: #3B3C51;
-  
+
     margin: auto;
     margin-top: ${props => props.blockDesign ? '5px' : '30px'};
+    top:300px;
+ 
     padding: 20px 60px 20px 60px;
     border-radius: 20px;
     width: fit-content;
@@ -21,7 +23,7 @@ const BubbleDesign = styled.div`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     opacity: ${props => (props.answered ? "0.5" : "1" )};
     @media (max-width: 400px) {
-        width: 330;
+        width: 220px;
       }
   `;
 

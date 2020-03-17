@@ -30,16 +30,15 @@ const BubbleStyle = styled.div`
   position: relative;
 
   @media (max-width: 400px) {
-    width: 330;
+    width: 200px;
   }
 `;
 
 const SendIcon = styled.img`
-  position: absolute;
-  margin-top: -25px;
-  width: 20px;
+  position: relative;
+  margin-top: 20px;
   height: 20px;
-  left: 8%;
+  left: -5%;
 `;
 
 const PromptInput = props => {
@@ -79,13 +78,15 @@ const PromptInput = props => {
 
       {userNote ? (
         <AutoTextArea
+          marginTop={"20px"}
+          width={"200px"}
           color={"#A7AFCF"}
           placeholder={"הערות אישיות"}
           onChange={e => {}}
         />
       ) : null}
 
-      <div>
+      <div style={{position:'relative',display:'flex'}}>
         <AutoTextArea
           getValueCallback={getTextAreaValue}
           marginTop={"20px"}
@@ -98,7 +99,7 @@ const PromptInput = props => {
           }}
         />
 
-        {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} />}
+        {answered ? <SendIcon src={sendButton} onClick={clickSubmit} /> : <SendIcon src={sendButton} onClick={clickSubmit} />}
       </div>
     </BubbleStyle>
   );

@@ -16,7 +16,7 @@ body {
 
 #mypage {
   width: auto;
-  height: 80vh;
+  height: 650px;
   background-color: #28293b;
   top: 0px;
   margin: auto;
@@ -24,26 +24,27 @@ body {
 
 #chatContainer {
   width: auto;
-  height: 70%;
+  height: 100%;
   margin: right;
   overflow: auto;
   align-items: center;
-  position: relative;
+
+  display: grid;
 }
 
 #block {
   height: 60vh;
 }
 
-#chatDiv {
+/* #chatDiv {
   width: 100%;
   overflow: auto;
   background-color: #28293b;
   bottom: 0;
-  /* min-height: 50%; */
+ min-height: 55%; 
   position: absolute;
   max-height: 100%;
-}
+} */
 
 #chatDiv::-webkit-scrollbar-track
 {
