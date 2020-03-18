@@ -30,7 +30,7 @@ const PromptStyle = styled.div`
     font-size: 15px;
     text-align: center;
           width: 100%;
-          background-color: #3B3C51;
+    
 
     margin: auto;
     margin-top: 30px;

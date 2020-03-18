@@ -99,7 +99,7 @@ const PromptInput = props => {
           }}
         />
 
-        {answered ? <SendIcon src={sendButton} onClick={clickSubmit} /> : <SendIcon src={sendButton} onClick={clickSubmit} />}
+        {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} />}
       </div>
     </BubbleStyle>
   );
