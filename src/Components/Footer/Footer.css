@@ -3,11 +3,10 @@
     justify-content: center;
     outline:none;
 
-     margin-top: 300px; 
+     margin-top: 230px; 
 }
 
 .footer:focus {
     outline: none !important;
     box-shadow: none;
   }
-  
