@@ -31,7 +31,6 @@ const AutoTextArea = props => {
   const autoSize = e => {
     textAreaRef.current.style.height = "0";
     textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
-    props.heightCallBack(textAreaRef.current.style.height);
     if (props.getValueCallback) {
         props.getValueCallback(e.target.value);
     }

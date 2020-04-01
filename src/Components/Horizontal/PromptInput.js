@@ -58,15 +58,10 @@ const PromptInput = props => {
   const [answered, setAnsweredState] = useState(false);
   const [userNote, setUserNote] = useState(false);
   const textAreaValue = React.useRef(null);
-  const [textAreaHeight, setTextAreaHeight] = useState(0);
   const getTextAreaValue = newValue => {
     textAreaValue.current = newValue;
   };
 
-  const getHeightValue = newValue => {
-    setTextAreaHeight(newValue);
-     console.log(newValue);
-  };
 
   const clickSubmit = () => {
     setAnsweredState(true);
@@ -106,7 +101,6 @@ const PromptInput = props => {
 
       <div style={{display:"block"}}>
         <AutoTextArea
-          heightCallBack={getHeightValue}
           getValueCallback={getTextAreaValue}
           marginTop={"20px"}
           width={"200px"}
@@ -118,7 +112,7 @@ const PromptInput = props => {
           }}
         />
 
-          {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} height={textAreaHeight}/>}
+          {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit}/>}
 
        
       </div>
