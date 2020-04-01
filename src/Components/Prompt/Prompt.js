@@ -1,9 +1,8 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import './Prompt.css';
 import Design from '../Design/Design.js';
 import styled from 'styled-components';
 import PersonalNotesIcon from '../../images/editnote.svg';
-import { getByDisplayValue } from '@testing-library/dom';
 import AutoTextArea from '../AutoTextArea/AutoTextArea.js';
 
 const BubbleDesign = styled.div`
@@ -29,11 +28,14 @@ const BubbleDesign = styled.div`
 
 const NotesIcon = styled.img`
     display: block;
-     width: 20px;
-     height: 20px;
+     height: 18px;
      font-size: 20px;
      margin-right:-50px;
      margin-top:-10px;
+     padding: 5px;
+     &:hover {
+    background-color: #303142;
+     }
 `;
 
 
@@ -52,7 +54,7 @@ const Prompt=(props) => {
                             obj={obj}
                             botMessege={props.botMessege}/>
                 </div>
-                {userNote ? <AutoTextArea color={'#A7AFCF'} onChange={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
+                {userNote ? <AutoTextArea width={'200px'} color={'#A7AFCF'} onChange={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
                 {/* //Buttons */}
                 <div className='clickableTextContainer'>
                 {answered ?

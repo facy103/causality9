@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Horizontal.css";
 import Design from "../Design/Design.js";
 import styled from "styled-components";
@@ -7,12 +7,16 @@ import PersonalNotesIcon from "../../images/editnote.svg";
 import AutoTextArea from "../AutoTextArea/AutoTextArea.js";
 
 const NotesIcon = styled.img`
-  display: block;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  margin-right: -50px;
-  margin-top: -10px;
+
+display: block;
+     height: 18px;
+     font-size: 20px;
+     margin-right:-50px;
+     margin-top:-10px;
+     padding: 5px;
+     &:hover {
+    background-color: #303142;
+  }
 `;
 
 const BubbleStyle = styled.div`
@@ -35,19 +39,33 @@ const BubbleStyle = styled.div`
 `;
 
 const SendIcon = styled.img`
-  position: relative;
-  margin-top: 20px;
-  height: 20px;
-  left: -5%;
+
+float:left; 
+
+  padding: 5px;
+
+ margin-top:-30px;
+ margin-left:-40px;
+ height: 17px;
+  width: 20px;
+  &:hover {
+    background-color: #303142;
+  }
 `;
+
 
 const PromptInput = props => {
   const [answered, setAnsweredState] = useState(false);
   const [userNote, setUserNote] = useState(false);
   const textAreaValue = React.useRef(null);
-
+  const [textAreaHeight, setTextAreaHeight] = useState(0);
   const getTextAreaValue = newValue => {
     textAreaValue.current = newValue;
+  };
+
+  const getHeightValue = newValue => {
+    setTextAreaHeight(newValue);
+     console.log(newValue);
   };
 
   const clickSubmit = () => {
@@ -86,8 +104,9 @@ const PromptInput = props => {
         />
       ) : null}
 
-      <div style={{position:'relative',display:'flex'}}>
+      <div style={{display:"block"}}>
         <AutoTextArea
+          heightCallBack={getHeightValue}
           getValueCallback={getTextAreaValue}
           marginTop={"20px"}
           width={"200px"}
@@ -99,7 +118,9 @@ const PromptInput = props => {
           }}
         />
 
-        {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} />}
+          {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit} height={textAreaHeight}/>}
+
+       
       </div>
     </BubbleStyle>
   );

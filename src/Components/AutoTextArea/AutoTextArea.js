@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledTextArea = styled.textarea`
@@ -29,9 +29,9 @@ const StyledTextArea = styled.textarea`
 const AutoTextArea = props => {
   const textAreaRef = React.createRef();
   const autoSize = e => {
-
     textAreaRef.current.style.height = "0";
     textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    props.heightCallBack(textAreaRef.current.style.height);
     if (props.getValueCallback) {
         props.getValueCallback(e.target.value);
     }
