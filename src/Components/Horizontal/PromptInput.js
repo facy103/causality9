@@ -34,7 +34,7 @@ const BubbleStyle = styled.div`
   position: relative;
 
   @media (max-width: 400px) {
-    width: 220px;
+    /* width: 220px; */
   }
 `;
 
