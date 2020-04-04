@@ -66,6 +66,7 @@ const PromptInput = props => {
 
   const clickSubmit = () => {
     setAnsweredState(true);
+    toggleSubmitIcon(false);
     if (textAreaValue.current === null) {
       props.txtSubmit(props.ph);
     } else props.txtSubmit(textAreaValue.current);
