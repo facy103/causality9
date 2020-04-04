@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Horizontal.css";
 import Design from "../Design/Design.js";
 import styled from "styled-components";
@@ -56,6 +56,7 @@ position: absolute;
 
 const PromptInput = props => {
   const [answered, setAnsweredState] = useState(false);
+  const [submitIcon, toggleSubmitIcon] = useState(false); // starts with false until start typing
   const [userNote, setUserNote] = useState(false);
   const textAreaValue = React.useRef(null);
   const getTextAreaValue = newValue => {
@@ -74,12 +75,18 @@ const PromptInput = props => {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       setAnsweredState(true);
+      toggleSubmitIcon(false);
       if (e.target.value === "") {
         e.target.value = props.ph;
       }
       props.txtSubmit(e.target.value);
     }
+
   };
+
+  const sendIconHandler = (e) => {
+   if (e.target.value.length > 0) {toggleSubmitIcon(true)} else toggleSubmitIcon(false);
+  }
 
   return (
     <BubbleStyle answered={answered} blockDesign={props.obj.blockDesign}>
@@ -95,7 +102,7 @@ const PromptInput = props => {
           width={"200px"}
           color={"#A7AFCF"}
           placeholder={"הערות אישיות"}
-          onChange={e => {}}
+          onKeyDown={e => {}}
         />
       ) : null}
 
@@ -106,14 +113,14 @@ const PromptInput = props => {
           width={"200px"}
           color={"white"}
           placeholder={props.ph}
-          onChange={event => {
+          onKeyDown={event => {
             txtSubmit(event);
             props.onChange(event);
           }}
+          onChange={e=>{sendIconHandler(e)}}
         />
 
-          {answered ? null : 
-          <SendIcon src={sendButton} onClick={clickSubmit}/>
+          {submitIcon ? <SendIcon src={sendButton} onClick={clickSubmit}/> : null
           }
 
        

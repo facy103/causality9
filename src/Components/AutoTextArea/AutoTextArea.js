@@ -36,7 +36,10 @@ const AutoTextArea = props => {
     if (props.getValueCallback) {
         props.getValueCallback(e.target.value);
     }
+    props.onChange(e);
   };
+
+
 
   return (
     <StyledTextArea
@@ -52,7 +55,8 @@ const AutoTextArea = props => {
         autoSize(e);
       }}
       onKeyDown={e => {
-        props.onChange(e);
+        props.onKeyDown(e);
+
       }}
     />
 
