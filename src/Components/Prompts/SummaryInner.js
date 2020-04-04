@@ -112,13 +112,13 @@ const SummaryInner = ( props ) => {
             {answered ?
                     <button 
                                               className="clickableText">
-                                                  <i className="fas fa-chevron-down fa-3x"></i>
+                                              המשך
                     </button> :
                  <button onClick={ ()=> { props.setNextStep('a')
                             setAnswerState(true);
                          }}
                                                   className="clickableText">
-                                                      <i className="fas fa-chevron-down fa-3x"></i>
+                                                      המשך
                         </button>
                     
                 }

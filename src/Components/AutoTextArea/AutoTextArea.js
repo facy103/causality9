@@ -7,8 +7,9 @@ const StyledTextArea = styled.textarea`
   border-right: 0;
   resize: none;
   color: ${props => props.color};
-  margin-right: 0.5%;
-  padding-right: 1.5%;
+  /* margin-right: 0.5%;
+  padding-right: 1.5%; */
+  margin: auto;
   background-color: #3b3c51;
   margin-top: ${props => (props.marginTop)};
   width: ${props => (props.width ? props.width : "50%")};
@@ -19,6 +20,7 @@ const StyledTextArea = styled.textarea`
   box-shadow: none;
   overflow: hidden;
   height: 17px;
+  display: block;
 
   &:focus {
     outline: none !important;

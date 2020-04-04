@@ -14,9 +14,9 @@ display: block;
      margin-right:-50px;
      margin-top:-10px;
      padding: 5px;
-     &:hover {
+     /* &:hover {
     background-color: #303142;
-  }
+  } */
 `;
 
 const BubbleStyle = styled.div`
@@ -40,12 +40,12 @@ const BubbleStyle = styled.div`
 
 const SendIcon = styled.img`
 
-float:left; 
-
+/* float:left;  */
+/* display: block; */
+position: absolute;
   padding: 5px;
-
- margin-top:-30px;
- margin-left:-40px;
+ margin-top:-24px;
+ margin-right:101px;
  height: 17px;
   width: 20px;
   &:hover {
@@ -99,7 +99,7 @@ const PromptInput = props => {
         />
       ) : null}
 
-      <div style={{display:"block"}}>
+      <div>
         <AutoTextArea
           getValueCallback={getTextAreaValue}
           marginTop={"20px"}
@@ -112,7 +112,9 @@ const PromptInput = props => {
           }}
         />
 
-          {answered ? null : <SendIcon src={sendButton} onClick={clickSubmit}/>}
+          {answered ? null : 
+          <SendIcon src={sendButton} onClick={clickSubmit}/>
+          }
 
        
       </div>

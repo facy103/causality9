@@ -33,9 +33,9 @@ const NotesIcon = styled.img`
      margin-right:-50px;
      margin-top:-10px;
      padding: 5px;
-     &:hover {
+     /* &:hover {
     background-color: #303142;
-     }
+     } */
 `;
 
 
