@@ -11,24 +11,19 @@ body {
 
 #mypage {
   width: auto;
-  height: 600px;
+  height: 700px;
   background-color: #28293b;
-  top: 0px;
-  margin: auto;
+  /* margin-top: 100px; */
 }
 
 #chatContainer {
   width: auto;
-  height: 60vh;
+  height: 100%;
   margin: right;
   overflow: auto;
   /* align-items: center; */
   position: relative;
   /* display: grid; */
-}
-
-#block {
-  height: 60vh;
 }
 
 #chatDiv {
@@ -38,7 +33,7 @@ body {
   overflow: auto;
   background-color: #28293b;
   bottom: 0;
-  /* min-height: 55%;  */
+  min-height: 70%; 
   position: absolute;
   max-height: 100%;
   /* background-color: blue; */
