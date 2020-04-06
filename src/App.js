@@ -10,11 +10,8 @@ import questions from './DB/perfectDB.js';
 import { findTitle, textTransform } from './mytools.js';
 
 let questionCount = 0;
-let questionCountStore = [0];
 let wishDB = [];
-let newOutput = [questions[0]];
-
-
+let dialogeStore = [];
 
 const chatDivRef = React.createRef();
 const bottomOfScreen = React.createRef();
@@ -34,6 +31,7 @@ const App = () => {
 
   const txtSubmit = (e) => {
     questions[questionCount].answer = e;
+    dialogeStore.push(questions[questionCount]);
     setNextStep();
   }
 
@@ -72,13 +70,14 @@ const App = () => {
   }
 
   const setNextStep = (value) => {
+
+    let newOutput = [...terminalOutput];
     setIndex(value);
     let obj = questions[questionCount];
     let mirror = true;
     if (obj.mirror === false) { mirror = false; }
-    questionCountStore.push(questionCount);
-    newOutput = [...terminalOutput];
-    newOutput.push({ ...questions[questionCount] });
+    newOutput.push({ ...obj });
+
     newOutput[newOutput.length - 1].question = textTransform(questions, obj, obj.question, mirror);
     setTimeout(() => { setTerminalOutput(newOutput) }, 700);
   }
@@ -140,7 +139,7 @@ const App = () => {
           <div ref={bottomOfScreen} style={{ backgroundColor: 'red', float: "left", clear: "both" }}></div>
         </div>
       </div>
-      <Footer />
+      <Footer dialogeStore={dialogeStore}/>
     </div>
   )
 }

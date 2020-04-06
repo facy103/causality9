@@ -12,7 +12,7 @@ const Footer = (props) => {
 
         <div className="footer"> 
             {/* <Send setNextStep={props.setNextStep} /> */}
-            <Save />
+            <Save dialogeStore={props.dialogeStore}/>
             <Restart />
             <Home />
         </div>
