@@ -42,8 +42,6 @@ const App = () => {
       wishDB.push(questions[questionCount].answer);
     }
 
-
-      console.log(`${questionCount}+ ${questions[questionCount].title}`);
       if ("swap" in questions[questionCount]) {
         for (let swapRef in questions[questionCount].swap) {
           var swapObj = questions[questionCount].swap;
@@ -72,7 +70,6 @@ const App = () => {
   }
 
   const setNextStep = (value) => {
-
     let newOutput = [...terminalOutput];
     setIndex(value);
     let obj = questions[questionCount];

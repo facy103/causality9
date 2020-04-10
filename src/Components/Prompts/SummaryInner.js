@@ -29,9 +29,8 @@ const arrowContainer = {
 const PromptStyle = styled.div`
     font-size: 15px;
     text-align: center;
-          width: 100%;
-          background-color: #3B3C51;
-
+    width: 100%;
+    background-color: #3B3C51;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 7.5px;
@@ -54,13 +53,12 @@ const RenderWishDB=(DB,totalIdx) => {
             על פי תשובותיך עד כה:
         </div>
          <br></br>
-  
          {DB.map((wish, idx) =>
         {
             if ( idx > 0 && idx < DB.length) 
             {
-             return (
-                    <div key={idx+totalIdx}>
+             return ( 
+                    <div key={idx+totalIdx}> 
                        <div style={arrowContainer}>
                           <div style={{minWidth:'30px'}}></div>
                           <div ><i  className="fas fa-long-arrow-alt-down innerArrow fa-2x"></i></div>
@@ -75,7 +73,7 @@ const RenderWishDB=(DB,totalIdx) => {
              )}
          else
              {
-                return (
+                return ( 
                     <div key={idx+totalIdx}>
                           <div style={oneWish}>
                             <div style={{fontSize:'13px'}}>הרצון:</div>
@@ -84,9 +82,7 @@ const RenderWishDB=(DB,totalIdx) => {
                         </div>
                     </div>)
             }
-          }
-   
-      
+          }   
     )}
     </Fragment>
         )
@@ -105,7 +101,6 @@ const SummaryInner = ( props ) => {
                      <Design path={props.path} questionCount={props.questionCount} 
                         botMessege={textTransform(terminalOutput, obj, props.h1, true)}/>
                      </span>
-           
                         {RenderWishDB(wishDB, props.index)}
              <div style={separator}></div>
             <div className='clickableTextContainer'>
