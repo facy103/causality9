@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Motion, spring } from 'react-motion';
 import './style.css';
 import Footer from "./Components/Footer/Footer.js"
 import Prompt from "./Components/Prompt/Prompt.js"
 import PromptInput from "./Components/Horizontal/PromptInput.js"
 import SummaryInner from "./Components/Prompts/SummaryInner.js"
-import questions from './DB/perfectDB.js';
-// import questions from './DB/causality.js';
+// import questions from './DB/perfectDB.js';
+import questions from './DB/causality.js';
 import { findTitle, textTransform } from './mytools.js';
 
 let questionCount = 0;
