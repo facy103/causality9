@@ -103,6 +103,7 @@ const PromptInput = props => {
           width={"200px"}
           color={"#A7AFCF"}
           placeholder={"הערות אישיות"}
+          onChange={(e)=>{}}
           onKeyDown={e => {}}
         />
       ) : null}

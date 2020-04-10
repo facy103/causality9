@@ -54,7 +54,7 @@ const Prompt=(props) => {
                             obj={obj}
                             botMessege={props.botMessege}/>
                 </div>
-                {userNote ? <AutoTextArea width={'200px'} color={'#A7AFCF'} onChange={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
+                {userNote ? <AutoTextArea width={'200px'} color={'#A7AFCF'} onChange={(e)=>{}} onKeyDown={(e)=>{}} placeholder={'הערות אישיות'} /> : null}
                 {/* //Buttons */}
                 <div className='clickableTextContainer'>
                 {answered ?

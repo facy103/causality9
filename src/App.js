@@ -42,15 +42,17 @@ const App = () => {
       wishDB.push(questions[questionCount].answer);
     }
 
-    if ("swap" in currentQ) {
-      for (let swapRef in currentQ.swap) {
-        var swapObj = questions[questionCount].swap;
-        var sourceValue = findTitle(questions, swapRef);
-        var targetValue = findTitle(questions, swapObj[swapRef]);
 
-        questions[sourceValue].answer = questions[targetValue].answer;
+      console.log(`${questionCount}+ ${questions[questionCount].title}`);
+      if ("swap" in questions[questionCount]) {
+        for (let swapRef in questions[questionCount].swap) {
+          var swapObj = questions[questionCount].swap;
+          var sourceValue = findTitle(questions, swapRef);
+          var targetValue = findTitle(questions, swapObj[swapRef]);
+          questions[sourceValue].answer = questions[targetValue].answer;
+        }
       }
-    }
+    
 
     if ("clear" in currentQ) {
       window.location.reload(false);

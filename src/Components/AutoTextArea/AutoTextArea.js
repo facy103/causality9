@@ -56,7 +56,6 @@ const AutoTextArea = props => {
       }}
       onKeyDown={e => {
         props.onKeyDown(e);
-
       }}
     />
 
