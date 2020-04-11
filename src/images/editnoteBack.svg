@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="282px" height="241px" viewBox="0 0 282 241" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-4.3%" y="-5.0%" width="108.5%" height="110.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="edit-doc" filter="url(#filter-1)" fill="#8C94A8" fill-rule="nonzero">
+            <g id="Group">
+                <rect id="Rectangle" x="51.49" y="55.28" width="116.77" height="17.96" rx="8.98"></rect>
+                <rect id="Rectangle" x="51.49" y="102.03" width="116.77" height="17.96" rx="8.98"></rect>
+                <rect id="Rectangle" x="51.49" y="148.77" width="73.03" height="17.96" rx="8.98"></rect>
+                <path d="M223.12,49.62 L223.12,24.27 C223.108973,11.9751889 213.144811,2.01102674 200.85,2 L26.27,2 C13.9751889,2.01102674 4.01102674,11.9751889 4,24.27 L4,212.21 C4.01102674,224.504811 13.9751889,234.468973 26.27,234.48 L200.85,234.48 C213.144811,234.468973 223.108973,224.504811 223.12,212.21 L223.12,154.91 L204.12,179.22 L204.12,212.22 C204.12,214.025971 202.655971,215.49 200.85,215.49 L26.27,215.49 C25.400186,215.492685 24.5653684,215.147654 23.9512538,214.531662 C23.3371392,213.915669 22.9946595,213.079802 23,212.21 L23,24.27 C22.9973331,23.4019273 23.3409935,22.5686395 23.9548165,21.9548165 C24.5686395,21.3409935 25.4019273,20.9973331 26.27,21 L200.85,21 C202.655971,21 204.12,22.4640289 204.12,24.27 L204.12,71.56 L223.12,49.62 Z" id="Path"></path>
+                <path d="M152,162.51 C151.555761,163.087569 151.291434,163.783166 151.24,164.51 L149.3,190.63 C149.219677,191.715036 149.63028,192.778888 150.418745,193.528607 C151.207209,194.278326 152.290384,194.634848 153.37,194.5 C153.608165,194.470599 153.842712,194.416988 154.07,194.34 L179,186.06 C179.679271,185.828264 180.276742,185.404476 180.72,184.84 L258.5,85.35 L229.84,63 L152,162.51 Z" id="Path"></path>
+                <path d="M270.75,40.07 C262.84154,33.9128073 251.440896,35.3222276 245.27,43.22 L236.53,54.43 L265.16,76.76 L273.9,65.55 C280.062943,57.6431273 278.652963,46.2379559 270.75,40.07 L270.75,40.07 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
