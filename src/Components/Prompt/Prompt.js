@@ -11,8 +11,8 @@ const BubbleDesign = styled.div`
   background-color: #3b3c51;
 
   margin: auto;
-  margin-top: ${(props) => (props.blockDesign ? "-249px" : "30px")};
-  margin-bottom:250px;
+  margin-top: ${(props) => (props.blockDesign ? "-149px" : "30px")};
+  margin-bottom:150px;
   top: 300px;
 
   padding: 20px 60px 20px 60px;

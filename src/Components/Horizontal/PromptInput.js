@@ -24,9 +24,9 @@ const BubbleStyle = styled.div`
   text-align: center;
   background-color: #3b3c51;
   margin: auto;
-  margin-top: ${props => (props.blockDesign ? "-249px" : "30px")};
+  margin-top: ${props => (props.blockDesign ? "-149px" : "30px")};
   padding: 20px 60px 20px 60px;
-  margin-bottom:250px;
+  margin-bottom:150px;
   border-radius: 20px;
   width: fit-content;
   color: white;
