@@ -9,7 +9,6 @@ const BubbleDesign = styled.div`
   font-size: 15px;
   text-align: center;
   background-color: #3b3c51;
-
   margin: auto;
   margin-top: ${(props) => (props.blockDesign ? "-149px" : "30px")};
   margin-bottom:150px;
